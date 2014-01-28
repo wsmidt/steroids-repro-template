@@ -25,15 +25,22 @@
 </head>
 <body>
   <div class="content-padded">
-
-    <button id='openShow'>Open show.html</button>
+    <button id='replace'>Replace</button><br/>
 
   </div>
   <script>
-  openShow.onclick =  function() {
-    var webView = new steroids.views.WebView("show.html");
-    steroids.layers.push(webView);
-  };
+  replace.onclick =  function() {
+    var view = new steroids.views.WebView("newIndex.html");
+
+    view.preload({},{
+      onSuccess: function () {
+        steroids.layers.replace(view);
+      },
+        onFailure: function () {
+          alert("failed");
+        }
+    });
+  }
   </script>
 </body>
 </html>
