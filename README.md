@@ -1,6 +1,4 @@
-#Steroids Repro Template
+#Steroids Repro: steroids.replace breaks stroids layers push
 
-Steroids Repro Template is a stripped-down Steroids project for reproducing Steroids issues. Clone it to your computer, create your repro case, put it on Github and let us know about it.
-
-For more information, see [the Creating excellent reproductions for issues guide]().
+Reproduction of the open Steroids issue: [steroids.layers.replace breaks steroids.layer.push](https://github.com/AppGyver/scanner/issues/101).
 
