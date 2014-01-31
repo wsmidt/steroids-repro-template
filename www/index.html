@@ -14,14 +14,26 @@
     font-size: 30px;
     margin: 1em;
   }
+  body {
+    height: 1000px;
+  }
   </style>
 
 </head>
 <body>
-  <h2>Steroids Repro Template</h2>
+  <h2>Steroids Slow Tab Bar Repro</h2>
+
+  <button onClick="push()">tabBar: false</button>
 
   <script>
-    //Add your JavaScripts here
+  var indexView = new steroids.views.WebView("index.html");
+
+  function push() {
+    steroids.layers.push({
+       view: indexView,
+       tabBar: false
+    });
+  }
   </script>
 </body>
 </html>
