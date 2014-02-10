@@ -14,14 +14,34 @@
     font-size: 30px;
     margin: 1em;
   }
+  body {
+    background-color: white;
+  }
   </style>
 
 </head>
 <body>
   <h2>Steroids Repro Template</h2>
 
+  <button onClick="testBroadcast()">Broadcast</button>
+
+  <p>Result: <span id="result"></span></p>
+
   <script>
-    //Add your JavaScripts here
+  function updateResult() {
+    document.getElementById("result").innerHTML = "Success!"
+  }
+
+  function testBroadcast() {
+    steroids.nativeBridge.nativeCall({
+      method: "broadcastJavascript",
+      parameters: {
+        javascript: "updateResult();"
+      },
+      successCallbacks: [],
+      recurringCallbacks: []
+    });
+  }
   </script>
 </body>
 </html>
