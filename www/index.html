@@ -21,11 +21,53 @@
   </style>
 
 </head>
-<body>
+<body onload="onLoad()">
   <h2>Steroids Repro Template</h2>
-
   <script>
     //Add your JavaScripts here
+
+    //Notes: 
+    //  Android version: 4.3
+    //  Phone:           Samsung Galay S3
+    //  Model number:    SGH-T999
+    //  Kernel version:  3.0.31-1962493
+    //
+    //  Android Scanner version: 3.1.2.1
+    //  Steroids version:        3.1.17
+    //
+    //  After steroids on "ready" and cordovas "deviceready" events, the windows.requestFileSystem()
+    //  remains undefined on most occasions. 
+    //  Fails 6/10 times on the android device. Works 100% on iOS.
+  
+    var onLoad = function(){
+      //wait till everything is ready and then requestFs()
+      document.addEventListener("deviceready", function(){
+        console.log("cordova is ready!!!")
+        steroids.on("ready", function(){
+          console.log("steroids is ready!!!")
+          //both cordova and steroids is ready! we should beable to request the FileSystem now
+          requestFs()
+        })
+      })
+    }
+
+    var requestFs = function(){
+      if(!window.requestFileSystem){
+        //window.requestFileSystem should not be undefined! :(
+        alert("window.requestFileSystem: " + window.requestFileSystem)
+      } else {
+        //window.requestFileSystem is not undefined! yay!
+        window.requestFileSystem(window.PERSISTENT, 0, 
+          function success(fs){
+            alert("YAY!!! We got the FileSystem! :)")
+          },
+          function error(e) {
+            alert("Recieved Error while requesting for FileSystem: " + JSON.stringify(e))
+          }
+        )
+      }
+    }
+
   </script>
 </body>
 </html>
